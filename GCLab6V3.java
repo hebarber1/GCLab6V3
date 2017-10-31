@@ -12,13 +12,13 @@ public class GCLab6V3 {
 		int length = 0;
 		String userWord = " ";
 		String vowels = "aeiou";
-//		String consonant = " ";
+		// String consonant = " ";
 
 		// this loop will only execute if my condition is true to begin
 		while (choice.equalsIgnoreCase("y")) {
 
 			System.out.println("Enter a word to be translated: ");
-//			Scanner scan = new Scanner(System.in);
+			// Scanner scan = new Scanner(System.in);
 			userWord = userWord.toLowerCase();
 			userWord = scan.nextLine();
 
@@ -30,26 +30,29 @@ public class GCLab6V3 {
 				}
 
 				else {
-					for (i = 0; i <= length; i++) {
 
-						if (userWord.charAt(i) == vowels.charAt(i)) {
-							userWord = (userWord.substring(i - 1) + (userWord.substring(0, (i - 1))) + "ay");
-							// return;
-							break;
+					Boolean proceed = true;
+
+					for (i = 0; i < userWord.length(); i++) {
+						if (proceed) {
+							if (vowels.contains(String.valueOf(userWord.charAt(i)))) {
+								userWord = (userWord.substring(i) + (userWord.substring(0, i )) + "ay");
+								// return;
+
+								System.out.println(userWord);
+								proceed = false;
+							}
 						}
 
 					}
 
-					System.out.println("Do you want to continue? y/n");
-					choice = scan.nextLine();
-
 				}
 
-			//	System.out.println("Goodbye!");
-			//	 scan.close();
-
 			}
-
+			System.out.println("Do you want to continue? y/n");
+			choice = scan.nextLine();
 		}
+		System.out.println("Goodbye!");
+		scan.close();
 	}
 }
